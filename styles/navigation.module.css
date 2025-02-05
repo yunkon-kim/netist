@@ -1,0 +1,91 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff;
+  padding: 10px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 100;
+}
+
+.logoWrapper {
+  animation: slideDown 1s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text; /* Add standard property */
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  padding-right: 30px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* 살짝 커지는 효과 */
+}
+
+.menuListHorizontal {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  font-size: 1.2rem;
+  color: #4b5563;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  transform: scale(1.1);
+  color: #1d4ed8;
+}
+
+.active {
+  color: #3b82f6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+}
+
+.socialLinks a img {
+  width: auto;
+  height: 36px;
+}

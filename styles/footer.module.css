@@ -1,0 +1,30 @@
+.footer {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  margin-top: auto;
+}
+
+.footerContent {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  text-align: left;
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.footerContent p {
+  margin: 0.5rem 0;
+}
+
+.footerContent a {
+  color: #0d6efd;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerContent a:hover {
+  color: #0a58ca;
+}

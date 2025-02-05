@@ -1,0 +1,21 @@
+.layoutWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layoutContainer {
+  flex-grow: 1;
+  display: flex;
+}
+
+.mainContent {
+  min-height: calc(100vh - 64px);
+  width: 100%;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.contentWrapper {
+  min-height: calc(100vh - 150px);
+}
