@@ -1,0 +1,180 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #ffffff;
+  padding: 10px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 100;
+}
+
+.logoWrapper {
+  animation: slideDown 1s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text; /* Add standard property */
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  padding-right: 50px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Slightly growing effect */
+}
+
+.menuListHorizontal {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  font-size: 1.2rem;
+  color: #4b5563;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  transform: scale(1.1);
+  color: #1d4ed8;
+}
+
+.active {
+  color: #3b82f6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+}
+
+.socialLogo {
+  width: auto;
+  height: 36px;
+}
+
+.signInWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.signInButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.signInButton:hover {
+  background-color: #0051b3;
+}
+
+.profileIcon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.profileIcon:hover {
+  transform: scale(1.1);
+}
+
+.profileImage {
+  padding-top: 3px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: auto;
+  height: 38px;
+}
+
+.profileContainer {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdownItem {
+  padding: 12px 16px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #f3f4f6;
+  color: #1d4ed8;
+}
+
+.dropdownItem:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.dropdownItem:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Profile menu disabled */
+.dropdownItem:first-child {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.dropdownItem:first-child:hover {
+  background-color: transparent;
+  color: #9ca3af;
+}

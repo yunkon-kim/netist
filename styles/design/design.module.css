@@ -1,0 +1,540 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+}
+
+.containerFluid {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  max-width: 1600px; /* Increased from 1400px */
+  margin: 0 auto;
+  gap: 20px;
+  overflow: unset;
+  min-height: calc(100vh - 64px); /* Consider navigation height */
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 360px;
+  position: sticky;
+  max-height: calc(
+    100vh - 104px
+  ); /* navigation(64px) + gap(20px) + bottom margin(20px) */
+  top: 90px; /* Navigation height + top/bottom padding + extra gap */
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  position: fixed;
+  border-radius: 10px; /* Round all corners */
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08); /* Add shadhow on the right bottom */
+}
+
+.content {
+  flex-grow: 1; /* Allow content to expand */
+  padding: 20px;
+  background-color: #fff;
+  min-height: 100vh; /* Simplified from calc */
+  width: 100%;
+  max-width: calc(100% - 340px); /* sidebar width + gap */
+  min-width: 920px; /* Increased from 900px */
+  overflow-x: auto; /* Changed from hidden to auto */
+  gap: 20px;
+  margin-left: 380px; /* sidebar width + gap + padding */
+  flex: 1;
+  min-width: 920px;
+  background-color: #fff;
+  border-radius: 10px; /* Round all corners */
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08); /* Add shadhow on the right bottom */
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+/* Remove special formGroup styles for Generate button */
+.formGroup:last-child {
+  margin-top: 0; /* Changed from auto */
+  padding-bottom: 0; /* Changed from 20px */
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.formSelect {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.buttonPrimary,
+.buttonSuccess,
+.buttonWarning,
+.buttonSecondary {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.buttonPrimary {
+  background-color: #0d6efd;
+}
+
+.buttonSuccess {
+  background-color: #198754;
+}
+
+.buttonWarning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.buttonSecondary {
+  background-color: #6c757d;
+}
+
+.buttonPrimary:hover,
+.buttonSuccess:hover,
+.buttonWarning:hover,
+.buttonSecondary:hover {
+  opacity: 0.9;
+}
+
+.configurations {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.cspSection {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.cardTitle {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.networkInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.codeBlock {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  width: calc(100% - 2rem); /* Set to fill parent container width */
+  white-space: pre-wrap; /* Wrap long lines */
+  word-break: break-word; /* Break long words */
+  max-width: 100%; /* Limit to parent width */
+}
+
+.codeBlock code {
+  display: block;
+  width: 100%;
+  white-space: pre-wrap; /* Wrap long lines */
+  word-break: break-all; /* Break at all possible points */
+}
+
+.removeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.vnetContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.colVnet {
+  flex: 1 0 calc(25% - 20px);
+  margin: 10px;
+  min-width: 200px;
+}
+
+@media (max-width: 1200px) {
+  .colVnet {
+    flex: 1 0 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 992px) {
+  .colVnet {
+    flex: 1 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    margin-top: 0; /* Remove margin on mobile */
+  }
+
+  .containerFluid {
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100vh; /* Full height on mobile */
+    padding: 10px; /* Reduced padding on mobile */
+  }
+
+  .containerFluid {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative; /* Disable fixed position on mobile */
+    top: 0;
+    height: auto;
+    max-height: none;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .colVnet {
+    flex: 1 0 100%;
+  }
+}
+
+.networkSection {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  /* Removed max-width */
+  margin: 0 auto; /* Center alignment */
+  box-sizing: border-box; /* Include padding in width */
+  min-width: 880px; /* Increased from 860px */
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.formFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 70px; /* Adjusted height without hint */
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.875rem;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.formInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 0;
+  width: 100%;
+  height: 38px; /* Fixed input height */
+  font-size: 0.875rem;
+  min-width: 80px; /* Minimum input width */
+  margin-top: auto; /* Align input to bottom */
+}
+
+@media (max-width: 600px) {
+  .formFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ...existing code... */
+
+.vnetSection {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.vnetHeader {
+  display: inline-flex; /* Changed to inline-flex */
+  align-items: center;
+  gap: 10px; /* Space between text and button */
+  margin-bottom: 15px;
+}
+
+.vnetHeader h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #495057;
+  display: inline; /* Changed to inline */
+}
+
+.addVNetButton {
+  padding: 0.25rem 0.75rem;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-left: 10px; /* Gap from title */
+}
+
+/* ...existing code... */
+
+.sectionTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addVNetButton {
+  padding: 0.25rem 0.75rem;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.addVNetButton:hover {
+  opacity: 0.9;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+/* ...existing code... */
+
+.jsonContainer {
+  margin-top: 3rem; /* Increased top margin */
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  width: 100%;
+  min-width: 880px; /* Match networkSection width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.jsonContainer h3 {
+  margin: 0 0 1.5rem 0; /* Increased bottom margin */
+  font-size: 1.25rem;
+  color: #495057;
+  padding-bottom: 0.75rem; /* Added padding below title */
+  border-bottom: 1px solid #dee2e6; /* Added separator line */
+}
+
+/* ...existing code... */
+
+.formInput,
+.formSelect {
+  width: 100%;
+  height: 38px; /* Unified height for all input fields */
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  min-width: 80px;
+  box-sizing: border-box; /* Include padding in width calculation */
+  margin-top: auto; /* Align to bottom */
+}
+
+/* Chrome, Safari, Edge에서 number input의 화살표 제거 */
+.formInput[type="number"]::-webkit-outer-spin-button,
+.formInput[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ...existing code... */
+
+.vnetList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.vnetSection {
+  flex: 1;
+  min-width: 300px; /* Minimum section width */
+  max-width: 400px; /* Maximum section width */
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* ...existing code... */
+
+.vnetTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: fixed; /* Required for fixed column widths */
+}
+
+/* Table column width adjustments */
+.vnetTable th:first-child,
+.vnetTable td:first-child {
+  width: 10%;
+}
+
+.vnetTable th:nth-child(2),
+.vnetTable td:nth-child(2),
+.vnetTable th:nth-child(3),
+.vnetTable td:nth-child(3),
+.vnetTable th:nth-child(4),
+.vnetTable td:nth-child(4) {
+  width: 27%;
+}
+
+.vnetTable th:last-child,
+.vnetTable td:last-child {
+  width: 9%;
+}
+
+/* Input field size adjustments */
+.vnetTable input {
+  width: 90%;
+  min-width: 80px;
+}
+
+/* ...existing code... */
+
+.vnetTable th,
+.vnetTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.vnetTable th {
+  font-weight: 500;
+  color: #495057;
+  background-color: #f8f9fa;
+  font-size: 1rem;
+  white-space: nowrap; /* Prevent header text wrapping */
+}
+
+.vnetTable td:first-child {
+  width: 10%;
+  font-size: 1rem;
+}
+
+.vnetTable td:nth-child(2),
+.vnetTable td:nth-child(3),
+.vnetTable td:nth-child(4) {
+  width: 25%;
+}
+
+.vnetTable td:last-child {
+  width: 10%;
+}
+
+.vnetTable input {
+  width: 90%;
+}
+
+.vnetRemoveButton {
+  padding: 4px 8px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* formGroup 내부 요소들의 마진 조정 */
+.formGroup:last-child {
+  margin-top: 0; /* Remove top margin */
+  padding-bottom: 0; /* Remove bottom padding */
+}
+
+/* 버튼 컨테이너 추가 */
+.buttonContainer {
+  margin-top: 1rem; /* Space between input and button */
+}
+
+/* ...existing code... */

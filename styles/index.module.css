@@ -1,0 +1,86 @@
+.container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 60px; /* 네비게이션 바 높이만큼 여백 추가 */
+}
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2.5rem 1.25rem 0.3rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logoContainer {
+  margin-bottom: 2rem;
+  animation: slideDown 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+  font-size: 5rem; /* 인덱스 페이지는 좀 더 크게 */
+  font-weight: 700;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  text-align: justify;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #2196f3;
+  color: #2196f3;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.button:hover {
+  background-color: #2196f3;
+  color: #fff;
+  text-decoration: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
