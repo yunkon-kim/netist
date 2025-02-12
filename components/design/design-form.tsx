@@ -221,15 +221,16 @@ export default function DesignForm() {
       privateNetwork,
       supernetting,
       csps: networkConfigs.reduce((acc, config) => {
-        // Initialize CSP if not exists
         if (!acc[config.csp]) {
           acc[config.csp] = {};
         }
 
-        // Add VNet list to Region
         acc[config.csp][config.region] = config.vnets.map(
-          ({ id, ...vnet }) => ({
-            ...vnet,
+          ({ name, subnetCount, hostsPerSubnet, useFirstNZones }) => ({
+            name,
+            subnetCount,
+            hostsPerSubnet,
+            useFirstNZones,
           })
         );
 
@@ -333,10 +334,10 @@ export default function DesignForm() {
               const newCsp = e.target.value as CSP;
               setSelectedCsp(newCsp);
               const krRegion = getKoreaRegion(newCsp);
-              {
-                krRegion != ""
-                  ? setSelectedRegion(krRegion)
-                  : setSelectedRegion(providers[newCsp][0]);
+              if (krRegion !== "") {
+                setSelectedRegion(krRegion);
+              } else {
+                setSelectedRegion(providers[newCsp][0]);
               }
             }}
           >
@@ -445,7 +446,7 @@ export default function DesignForm() {
 
               {config.vnets.length === 0 ? (
                 <div className={styles.emptyState}>
-                  Click "Add" button to create a virtual network
+                  Click Add button to create a virtual network
                 </div>
               ) : (
                 <table className={styles.vnetTable}>
