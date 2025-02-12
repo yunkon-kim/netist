@@ -35,10 +35,10 @@ interface Connection {
 }
 
 export default function Craft() {
-  // 토폴로지 컨테이너 참조 추가
+  // Add this for referencing topology container
   const topologyRef = React.useRef<HTMLDivElement>(null);
 
-  // VNET 노드들의 위치 계산
+  // Calculate position of vNet cards
   const calculatePositions = (
     count: number,
     containerWidth: number,
@@ -46,14 +46,14 @@ export default function Craft() {
   ) => {
     const centerX = containerWidth / 2;
     const centerY = containerHeight / 2;
-    const radius = Math.min(centerX, centerY) * 0.6; // 컨테이너 크기의 60%를 반지름으로 사용
+    const radius = Math.min(centerX, centerY) * 0.6; // set radius 60% of container size
 
     const positions = [];
     for (let i = 0; i < count; i++) {
       const angle = (i * 2 * Math.PI) / count - Math.PI / 2;
       positions.push({
-        x: centerX + radius * Math.cos(angle) - 96, // w-48 (192px)의 절반
-        y: centerY + radius * Math.sin(angle) - 40, // 대략적인 카드 높이의 절반
+        x: centerX + radius * Math.cos(angle) - 96, // half of w-48 (192px)
+        y: centerY + radius * Math.sin(angle) - 40, // half of card height
       });
     }
     return positions;
@@ -83,7 +83,7 @@ export default function Craft() {
     },
   ];
 
-  // 초기 상태는 임시 위치로 설정
+  // Set initial VNET positions temporarily
   const [vnets, setVnets] = useState<VNET[]>(
     initialVnets.map((vnet) => ({
       ...vnet,
@@ -91,7 +91,7 @@ export default function Craft() {
     }))
   );
 
-  // 컴포넌트 마운트 시 VNET 위치 계산
+  // Calculate vNet positions on mounting component
   useEffect(() => {
     if (topologyRef.current) {
       const container = topologyRef.current;
@@ -105,7 +105,7 @@ export default function Craft() {
         }))
       );
     }
-  }, []);
+  }, [initialVnets.length]);
 
   const [connections, setConnections] = useState<Connection[]>([
     { id: 1, source: 1, target: 2, status: "active" },
@@ -188,7 +188,7 @@ export default function Craft() {
   };
 
   const handleDragStart = (e: React.MouseEvent, vnet: VNET) => {
-    e.preventDefault(); // 텍스트 선택 방지
+    e.preventDefault(); // Prevent text selection
     const rect = (e.target as HTMLElement).getBoundingClientRect();
     setDragOffset({
       x: e.clientX - rect.left,
@@ -197,7 +197,7 @@ export default function Craft() {
     setDraggedVnet(vnet);
   };
 
-  // 배경 드래그 시작
+  // handler to start dragging the background
   const handleBackgroundDragStart = (e: React.MouseEvent<SVGRectElement>) => {
     setIsDraggingBackground(true);
     setBackgroundDragStart({
@@ -206,10 +206,10 @@ export default function Craft() {
     });
   };
 
-  // 드래그 핸들러 수정
+  // handler to drag
   const handleDrag = (e: React.MouseEvent) => {
     if (draggedVnet) {
-      // 기존 VNET 드래그 로직
+      // logic to drag the vnet card
       const containerRect = (
         e.currentTarget as HTMLElement
       ).getBoundingClientRect();
@@ -227,7 +227,7 @@ export default function Craft() {
       });
       setVnets(newVnets);
     } else if (isDraggingBackground) {
-      // 배경 드래그 시 모든 VNET 이동
+      // logic to drag the background
       const dx = (e.clientX - backgroundDragStart.x) / scale;
       const dy = (e.clientY - backgroundDragStart.y) / scale;
 
@@ -248,7 +248,7 @@ export default function Craft() {
     }
   };
 
-  // 드래그 종료 핸들러 수정
+  // handler to end dragging
   const handleDragEnd = () => {
     setDraggedVnet(null);
     setIsDraggingBackground(false);
@@ -275,14 +275,14 @@ export default function Craft() {
           }
         }}
         style={{ cursor: isDraggingBackground ? "grabbing" : "grab" }}
-        tabIndex={0} // 키보드 이벤트를 받기 위해 필요
+        tabIndex={0} // needed to keyboard events
       >
         <div
           className="absolute inset-0 origin-center transition-transform duration-200"
           style={{ transform: `scale(${scale})` }}
         >
           <svg className="absolute inset-0 w-full h-full">
-            {/* 배경 드래그를 위한 투명한 rect */}
+            {/* transparent rect to drag background */}
             <rect
               x="0"
               y="0"
@@ -293,7 +293,7 @@ export default function Craft() {
               style={{ cursor: isDraggingBackground ? "grabbing" : "grab" }}
             />
 
-            {/* 기존 연결선 */}
+            {/* connection lines */}
             {connections.map((conn) => {
               const sourceVnet = vnets.find((vnet) => vnet.id === conn.source);
               const targetVnet = vnets.find((vnet) => vnet.id === conn.target);
