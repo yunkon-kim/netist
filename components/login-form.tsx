@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import bcrypt from "bcryptjs";
 import styles from "@/styles/login.module.css";
 
 export default function LoginForm() {
@@ -14,21 +13,21 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (username !== process.env.NEXT_PUBLIC_NETIST_ADMIN_USERNAME) {
-      setError("Invalid username or password");
-      return;
-    }
-
     try {
-      const hashedPassword = process.env.NEXT_PUBLIC_NETIST_ADMIN_PASSWORD;
-      const isValid = await bcrypt.compare(password, hashedPassword || "");
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
-      if (isValid) {
+      const data = await res.json();
+
+      if (data.success) {
         sessionStorage.setItem("isLoggedIn", "true");
         window.dispatchEvent(new Event("storage"));
         router.push("/home");
       } else {
-        setError("Invalid username or password");
+        setError(data.error || "Invalid username or password");
       }
     } catch (err) {
       setError("An error occurred during login");
