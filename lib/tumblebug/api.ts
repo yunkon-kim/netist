@@ -1,6 +1,5 @@
 import path from "path";
 import { promises as fs } from "fs";
-import { CSP } from "@/types/types";
 
 export class ApiError extends Error {
   constructor(public statusCode: number, message: string) {
@@ -151,7 +150,8 @@ export async function initializeProvidersAndRegions() {
     console.log("Tumblebug is not ready, using cached data if available");
   } catch (error) {
     console.log(
-      "Could not connect to Tumblebug, using cached data if available"
+      "Could not connect to Tumblebug, using cached data if available:",
+      error
     );
     // Don't rethrow the error, just log it and continue
   }
