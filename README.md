@@ -8,6 +8,8 @@ It provides an intuitive interface for creating and configuring virtual networks
 - Next.js 15 (App Router)
 - TypeScript
 - CSS Modules
+- shadcn/ui - Beautiful and accessible components
+- Tailwind CSS
 - React Hooks
 
 ## Getting Started
@@ -16,7 +18,7 @@ It provides an intuitive interface for creating and configuring virtual networks
 
 - Node.js v22.11.0 or higher
 - npm 11.0.0 or higher
--
+- etc.
 
 ### Quick Start
 
@@ -53,18 +55,18 @@ This project is licensed under the Apache License 2.0 License - see the [LICENSE
 
 ## Appendix
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`shadcn/ui init`](https://ui.shadcn.com/docs/installation/next).
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Learn about the core technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs) - Framework features and API
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs) - UI components and guides
+- [Tailwind CSS](https://tailwindcss.com/docs) - Utility-first CSS
+- [TypeScript Handbook](https://www.typescriptlang.org/docs) - TypeScript essentials
 
 ## Deploy on Vercel
 
